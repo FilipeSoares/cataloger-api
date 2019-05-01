@@ -1,4 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+const url = '';
+const dbName = 'cataloger-db';
+
+const db = MongoClient.connect(url, function(err, client) {
+    assert.equal(null, err);
+    console.log("Connected successfully to server");   
+    return client.db(dbName);
+});
+
+mudule.exports = db;
+
+
+/* const sqlite3 = require('sqlite3').verbose();
 const bd = new sqlite3.Database('data.db');
 
 const USUARIOS_SCHEMA = `
@@ -67,5 +82,5 @@ process.on('SIGINT', () =>
         process.exit(0);
     })
 );
-
-module.exports = bd;
+ 
+module.exports = bd;*/
