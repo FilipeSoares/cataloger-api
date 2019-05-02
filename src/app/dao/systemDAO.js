@@ -2,10 +2,20 @@ class SystemDAO {
 
     constructor(db) {
         this._db = db;
+        this._collection = "systems";
     }
 
     findAll() {
-        return null;    
+
+        _db.findAll( "systems", function(err, data){
+
+            if (err){
+                console.log(err);
+            }
+            
+            return data;
+        });  
+
     }
 
     findByID(id) {
@@ -13,3 +23,5 @@ class SystemDAO {
     }
 
 }
+
+module.exports = SystemDAO;

@@ -5,28 +5,27 @@ const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 const dbName = 'cataloger-db';
 
-var __conn;
+var _conn;
 
 MongoClient.connect(url, { useNewUrlParser: true })
-    .then(client => __conn = client.db(dbName))
+    .then(client => _conn = client.db(dbName))
     .catch(err => console.log(err));
 
-function insert() {
+function insert(collection, document) {
 
-    __conn.collection("systems").insertMany([
-        { a: 1 }, { a: 2 }, { a: 3 }
-    ], function (err, result) {
-        assert.equal(err, null);
-        assert.equal(3, result.result.n);
-        assert.equal(3, result.ops.length);
-        console.log("Inserted 3 documents into the collection");
-        callback(result);
-    });
+    _conn.collection(collection)
+            .insertOne(document)
+            .then( () => {
+                console.log("Document inserted");
+            })
+            .catch( (err) => {
+                console.error(err);
+            });
 
 }
 
 function removeAll() {
-    __conn.collection("systems").deleteMany({})
+    _conn.collection("systems").deleteMany({})
         .then( (result) => {
             console.log(result)
         }).catch( (err) => {
@@ -34,8 +33,8 @@ function removeAll() {
         });
 }
 
-function findAll(callback) {
-    __conn.collection("systems").find({}).toArray(callback);
+function findAll(collection, callback) {
+    _conn.collection(collection).find({}).toArray(callback);
 }
 
 module.exports = { findAll, insert, removeAll };
