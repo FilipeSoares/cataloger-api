@@ -6,16 +6,20 @@ class SystemDAO {
     }
 
     findAll() {
+        return new Promise((resolve, reject) => {
+            this._db.findAll( "systems", function(err, data){
+                if (err){
+                    return reject(err);
+                }
+                return resolve(data);
+            });
+        });
 
-        _db.findAll( "systems", function(err, data){
+    }
 
-            if (err){
-                console.log(err);
-            }
-            
-            return data;
-        });  
-
+    insert(system) {
+        return this._db.insert( "systems", system );
+        
     }
 
     findByID(id) {
