@@ -1,8 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const url = 'mongodb+srv://cataloger:cataloger@clusterfree-anpsj.mongodb.net/cataloger-db?retryWrites=true';
-// const url = 'mongodb://localhost:27017';
+// const url = 'mongodb+srv://cataloger:cataloger@clusterfree-anpsj.mongodb.net/cataloger-db?retryWrites=true';
+const url = 'mongodb://localhost:27017';
 const dbName = 'cataloger-db';
 
 var _conn;

@@ -1,4 +1,4 @@
-const SystemDAO = require('../dao/systemDAO');
+const SystemDAO = require('../dao/system-dao');
 const database = require('../../config/database');
 
 module.exports = (app) => {
