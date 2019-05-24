@@ -30,4 +30,12 @@ function findAll(collection, callback) {
     _conn.collection(collection).find({}).toArray(callback);
 }
 
-module.exports = { findAll, insert, removeAll };
+function findById(collection, id) { 
+    console.log(collection + " " + id);
+    _conn.collection(collection).find({ 'id': id }).toArray(function(error, result){
+        console.log(error);
+        console.log(result);
+    });
+}
+
+module.exports = { findAll, findById, insert, removeAll };
