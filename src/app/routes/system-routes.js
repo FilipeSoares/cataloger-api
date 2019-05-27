@@ -8,28 +8,20 @@ module.exports = (app) => {
         dao = new SystemDAO(database);
 
         dao.findAll()
-                .then(systems => {
-                    res.send(systems);
-                })
-                .catch(err => console.log(err));
-        
+            .then(systems => {
+                res.send(systems);
+            })
+            .catch(err => console.log(err));
+
     });
 
     app.get('/systems/:id', function (req, res) {
-        dao = new SystemDAO(database);
-        /* console.log( "Consultando sistema : " + req.params.id );
+        console.log("Consultando sistema : " + req.params.id);
         dao = new SystemDAO(database);
 
         dao.findByID( req.params.id )
-                .then( system => {
-                    console.log(system);
-                    res.send(system);
-                })
-                .catch(err => console.log(err)); */
-
-                dao.findByID( req.params.id );
-
-                res.send(req.params.id);
+            .then( system => res.send(system) )
+            .catch( err => console.log(err) );
 
     });
 

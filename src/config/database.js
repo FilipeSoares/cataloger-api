@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb');
 const assert = require('assert');
 
 // const url = 'mongodb+srv://cataloger:cataloger@clusterfree-anpsj.mongodb.net/cataloger-db?retryWrites=true';
@@ -31,11 +32,8 @@ function findAll(collection, callback) {
 }
 
 function findById(collection, id) { 
-    console.log(collection + " " + id);
-    _conn.collection(collection).find({ 'id': id }).toArray(function(error, result){
-        console.log(error);
-        console.log(result);
-    });
+    var _id = new mongo.ObjectID(id);
+    return _conn.collection(collection).findOne({ '_id': _id });
 }
 
 module.exports = { findAll, findById, insert, removeAll };
