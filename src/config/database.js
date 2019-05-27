@@ -12,21 +12,6 @@ MongoClient.connect(url, { useNewUrlParser: true })
     .then(client => _conn = client.db(dbName))
     .catch(err => console.log(err));
 
-function insert(collection, document) {
-
-    return _conn.collection(collection)
-        .insertOne(document);
-}
-
-function removeAll() {
-    _conn.collection("systems").deleteMany({})
-        .then((result) => {
-            console.log(result)
-        }).catch((err) => {
-            console.log(err);
-        });
-}
-
 function findAll(collection, callback) {
     _conn.collection(collection).find({}).toArray(callback);
 }
@@ -36,4 +21,20 @@ function findById(collection, id) {
     return _conn.collection(collection).findOne({ '_id': _id });
 }
 
-module.exports = { findAll, findById, insert, removeAll };
+function insert(collection, document) {
+   return _conn.collection(collection)
+        .insertOne(document);
+}
+
+function update(collection, document, id) {
+    var _id = new mongo.ObjectID(id);
+    return _conn.collection(collection)
+        .findOneAndUpdate({ '_id': _id }, { $set: { document } }, { returnOriginal: false });
+}
+
+function remove(collection, id) {
+    var _id = new mongo.ObjectID(id);
+    return _conn.collection(collection).deleteOne({ '_id': _id });
+}
+
+module.exports = { findAll, findById, insert, update, remove };

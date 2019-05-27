@@ -7,7 +7,7 @@ module.exports = (app) => {
 
         dao = new SystemDAO(database);
 
-        dao.findAll()
+        dao.list()
             .then(systems => {
                 res.send(systems);
             })
@@ -16,10 +16,10 @@ module.exports = (app) => {
     });
 
     app.get('/systems/:id', function (req, res) {
-        console.log("Consultando sistema : " + req.params.id);
+        
         dao = new SystemDAO(database);
 
-        dao.findByID( req.params.id )
+        dao.fetch( req.params.id )
             .then( system => res.send(system) )
             .catch( err => console.log(err) );
 
@@ -27,14 +27,39 @@ module.exports = (app) => {
 
     app.post('/systems', function (req, res) {
 
-        console.log(req.body);
         dao = new SystemDAO(database);
-        dao.insert(req.body)
+        dao.create(req.body)
             .then(() => {
                 res.location('http://localhost:3000/systems').status(201).end();
             })
             .catch(err => console.log(err));
 
+
+    });
+
+    app.put('/systems/:id', function (req, res) {
+        
+        console.log("Update system : " + req.params.id);
+
+        dao = new SystemDAO(database);
+
+        dao.update( req.body, req.params.id )
+            .then( system => res.send(system) )
+            .catch( err => console.log(err) );
+
+    });
+
+    app.delete('/systems/:id', function (req, res) {
+        
+        console.log("Remove system : " + req.params.id);
+
+        dao = new SystemDAO(database);
+
+        dao.remove( req.params.id )
+            .then( () => {
+                res.status(204).end();
+            })
+            .catch( err => console.log(err) );
 
     });
 
