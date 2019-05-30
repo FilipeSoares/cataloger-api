@@ -1,2 +1,2 @@
-# cataloger
-A sample catalog system
+# Cataloger
+A sample RESTful api built-in NodeJs + Express

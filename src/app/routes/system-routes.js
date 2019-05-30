@@ -30,8 +30,6 @@ module.exports = (app) => {
   })
 
   app.put('/systems/:id', function (req, res) {
-    console.log('Update system : ' + req.params.id)
-
     let dao = new SystemDAO(database)
 
     dao.update(req.body, req.params.id)
@@ -40,8 +38,6 @@ module.exports = (app) => {
   })
 
   app.delete('/systems/:id', function (req, res) {
-    console.log('Remove system : ' + req.params.id)
-
     let dao = new SystemDAO(database)
 
     dao.remove(req.params.id)
