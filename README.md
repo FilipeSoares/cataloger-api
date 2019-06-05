@@ -20,25 +20,27 @@ DB_NAME=cataloger-db
 
 ## Running in Docker
 
-To run just run the cli ```>$ docker-compose up```
+To run just run the cli **`$ docker-compose up`**
 
 ## Running Standalone
 
 You can run without docker container, to this just do the foolowing steps:
 
-- Modify the propertie of mongo url in ```.env``` file;
-- Run ```npm start``` in your CLI;
+- Modify the propertie of mongo url in **`.env`** file;
+- Run **`npm start`** in your CLI;
 
 ## Use
-Just access the address ```http://localhost:3000``` in your rest client
+Just access the address **http://localhost:3000** in your rest client
 
 ### Endpoints
+
 | HTTP Method | Endpoint | Description |
-| GET |  /systems | List all systems |
-| GET |  /systems/:id | Fetch a system |
-| POST |  /systems | Create a new system |
-| PUT |  /systems/:id | Update a system |
-| DELETE |  /systems/:id | Update a system |
+| ----------- | -------- | ----------- |
+| `GET` |  /systems | List all systems |
+| `GET` |  /systems/:id | Fetch a system |
+| `POST` |  /systems | Create a new system |
+| `PUT` |  /systems/:id | Update a system |
+| `DELETE` |  /systems/:id | Delete a system |
 
 ## Author
 
