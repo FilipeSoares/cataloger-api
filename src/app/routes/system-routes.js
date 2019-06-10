@@ -1,5 +1,6 @@
 const SystemDAO = require('../dao/system-dao')
 const database = require('../../config/database')
+const System = require('../model/system')
 
 module.exports = (app) => {
   app.get('/systems', function (req, res) {
@@ -22,7 +23,8 @@ module.exports = (app) => {
 
   app.post('/systems', function (req, res) {
     let dao = new SystemDAO(database)
-    dao.create(req.body)
+    let system = new System(req.body.name, req.body.version)
+    dao.create(system)
       .then(() => {
         res.location('http://localhost:3000/systems').status(201).end()
       })
