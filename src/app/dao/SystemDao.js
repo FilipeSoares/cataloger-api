@@ -1,4 +1,4 @@
-class SystemDAO {
+class SystemDao {
   constructor (db) {
     this._db = db
     this._collection = 'systems'
@@ -40,4 +40,4 @@ class SystemDAO {
   }
 }
 
-module.exports = SystemDAO
+module.exports = SystemDao

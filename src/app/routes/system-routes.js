@@ -1,6 +1,6 @@
-const SystemDAO = require('../dao/system-dao')
+const SystemDAO = require('../dao/SystemDao')
 const database = require('../../config/database')
-const System = require('../model/system')
+const System = require('../model/System')
 
 module.exports = (app) => {
   app.get('/systems', function (req, res) {
