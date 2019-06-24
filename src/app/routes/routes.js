@@ -1,14 +1,7 @@
-module.exports = (app) => {
-  app.get('/', function (req, res) {
-    res.send(
-      `{ 
-        "api": "cataloger-api",
-        "version": 1.0.0
-      }`)
-  })
+const baseRoutes = require('./base-routes')
+const systemRoutes = require('./system-routes')
 
-  app.get('/health', function (req, res) {
-    res.send(
-      `OK`)
-  })
+module.exports = (app) => {
+  baseRoutes(app)
+  systemRoutes(app)
 }
