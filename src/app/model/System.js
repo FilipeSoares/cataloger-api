@@ -1,16 +1,24 @@
 class System {
-  constructor (name, version) {
-    this._name = name
-    this._version = version
+  constructor(name, version) {
+    this._name = name;
+    this._version = version;
   }
 
-  get name () {
-    return this._name
+  get name() {
+    return this._name;
   }
 
-  get version () {
-    return this._version
+  set name(name) {
+    this._name = name;
+  }
+
+  get version() {
+    return this._version;
+  }
+
+  set version(version) {
+    this._version = version;
   }
 }
 
-module.exports = System
+module.exports = System;

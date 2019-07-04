@@ -42,6 +42,10 @@ Just access the address **http://localhost:3000** in your rest client
 | `PUT` |  /systems/:id | Update a system |
 | `DELETE` |  /systems/:id | Delete a system |
 
+## Style Guide Formatter
+
+- Prettier => [https://prettier.io/](https://prettier.io/)
+
 ## Author
 
 Filipe Oliveira - [https://github.com/FilipeSoares](https://github.com/FilipeSoares)
