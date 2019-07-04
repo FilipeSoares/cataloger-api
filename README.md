@@ -42,6 +42,15 @@ Just access the address **http://localhost:3000** in your rest client
 | `PUT` |  /systems/:id | Update a system |
 | `DELETE` |  /systems/:id | Delete a system |
 
+### Model
+```json
+{
+    "_id": "654sdf654sdf4sdf654sdf",
+    "_name": "System",
+    "_version": "1.0.0"
+}
+```
+
 ## Style Guide Formatter
 
 - Prettier => [https://prettier.io/](https://prettier.io/)

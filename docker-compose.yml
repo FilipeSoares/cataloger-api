@@ -2,7 +2,7 @@ version: "3"
 services:
   cataloger-api:
     container_name: cataloger-api
-    image: filipe/cataloger
+    image: filipe/cataloger-api
     restart: always
     build: .
     ports:
@@ -11,6 +11,7 @@ services:
       - mongodb
     depends_on:
       - "mongodb"
+    env_file: .env
     networks:
       - cataloger-network    
   mongodb:
