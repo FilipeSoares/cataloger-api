@@ -1,24 +1,15 @@
-class System {
-  constructor(name, version) {
-    this._name = name;
-    this._version = version;
-  }
+const mongoose = require("mongoose");
 
-  get name() {
-    return this._name;
+const System = mongoose.Schema(
+  {
+    name: String,
+    version: String,
+    context: String,
+    tags: String
+  },
+  {
+    timestamps: true
   }
+);
 
-  set name(name) {
-    this._name = name;
-  }
-
-  get version() {
-    return this._version;
-  }
-
-  set version(version) {
-    this._version = version;
-  }
-}
-
-module.exports = System;
+module.exports = mongoose.model("System", System);
