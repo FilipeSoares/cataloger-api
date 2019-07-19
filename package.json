@@ -4,7 +4,7 @@
   "description": "A sample NodeJS RESTful API",
   "main": "index.js",
   "scripts": {
-    "test": "standard --fix",
+    "test": "node_modules/mocha/bin/_mocha test.js",
     "start": "nodemon index.js"
   },
   "keywords": [
