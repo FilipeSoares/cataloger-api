@@ -6,7 +6,18 @@ var expect = chai.expect
 var mongoose = require('mongoose')
 require('sinon-mongoose')
 
-var System = require('./src/app/model/System')
+var System = require('../src/app/model/System')
+
+describe('Save a new System', () => {
+    it('Create a system', (done) => {
+        let system = new System({name: 'Test System', version: '1.0.0', context: 'test-system', tags: 'test'});
+        system.save()
+            .then( (result) => {
+                expect(result._id).to.not.null;
+                done();
+            });
+    });
+});
 
 describe('Get all systems', function () {
     it('should return all systems', function (done) {
