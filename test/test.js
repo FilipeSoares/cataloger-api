@@ -1,13 +1,8 @@
 "use strict";
 
-var sinon = require('sinon')
 var chai = require('chai')
-
 var expect = chai.expect
-
 var mongoose = require('mongoose')
-require('sinon-mongoose')
-
 var System = require('../src/app/model/System')
 
 describe('Systems Tests', () => {

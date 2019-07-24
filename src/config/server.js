@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
