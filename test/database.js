@@ -10,12 +10,17 @@ mongoose
     useFindAndModify: false
   });
 
-mongoose.connection
-    .once('open', () => console.log('Connected!'))
-    .on('error', (error) => console.error('Error : ', error));
+before((done) => {
+  mongoose.connection
+    .on('error', (error) => console.error('Error : ', error))
+    .once('open', () => { 
+      console.log('Connected! Starting tests....');
+      done(); 
+    });
+});  
 
-beforeEach((done) => {
-        mongoose.connection.collections.systems.drop(() => {
-        done();
+after((done) => {
+        mongoose.connection.db.dropDatabase(() => {
+          mongoose.connection.close(done);
     }); 
 });
